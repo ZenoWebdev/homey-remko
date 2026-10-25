@@ -566,6 +566,56 @@
         ],
         "id": "stop_solar_boost"
       }
+    ],
+    "triggers": [
+      {
+        "id": "measure_temperature_changed",
+        "title": {
+          "en": "Room temperature changed",
+          "nl": "Kamertemperatuur verandert"
+        },
+        "tokens": [
+          {
+            "name": "measure_temperature",
+            "type": "number",
+            "title": {
+              "en": "Room temperature",
+              "nl": "Kamertemperatuur"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=remko"
+          }
+        ]
+      },
+      {
+        "id": "target_temperature_changed",
+        "title": {
+          "en": "Room target changed",
+          "nl": "Gewenste kamertemperatuur verandert"
+        },
+        "tokens": [
+          {
+            "name": "target_temperature",
+            "type": "number",
+            "title": {
+              "en": "Room target",
+              "nl": "Gewenste kamertemperatuur"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=remko"
+          }
+        ]
+      }
     ]
   },
   "drivers": [
@@ -597,7 +647,17 @@
         "forecast_today"
       ],
       "capabilitiesOptions": {
+        "measure_temperature": {
+          "title": {
+            "en": "Room temperature",
+            "nl": "Kamertemperatuur"
+          }
+        },
         "target_temperature": {
+          "title": {
+            "en": "Room target",
+            "nl": "Gewenste kamertemperatuur"
+          },
           "min": 15,
           "max": 30,
           "step": 0.5

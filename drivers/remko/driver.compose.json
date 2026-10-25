@@ -10,7 +10,8 @@
     "boost_active", "forecast_today"
   ],
   "capabilitiesOptions": {
-    "target_temperature": { "min": 15, "max": 30, "step": 0.5 },
+    "measure_temperature": { "title": { "en": "Room temperature", "nl": "Kamertemperatuur" } },
+    "target_temperature": { "title": { "en": "Room target", "nl": "Gewenste kamertemperatuur" }, "min": 15, "max": 30, "step": 0.5 },
     "thermostat_mode": { "values": [
       { "id": "auto", "title": { "en": "Automatic", "nl": "Automatisch" } },
       { "id": "heat", "title": { "en": "Heating", "nl": "Verwarmen" } },

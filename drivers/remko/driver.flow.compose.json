@@ -1,0 +1,18 @@
+{
+  "triggers": [
+    {
+      "id": "measure_temperature_changed",
+      "title": { "en": "Room temperature changed", "nl": "Kamertemperatuur verandert" },
+      "tokens": [
+        { "name": "measure_temperature", "type": "number", "title": { "en": "Room temperature", "nl": "Kamertemperatuur" } }
+      ]
+    },
+    {
+      "id": "target_temperature_changed",
+      "title": { "en": "Room target changed", "nl": "Gewenste kamertemperatuur verandert" },
+      "tokens": [
+        { "name": "target_temperature", "type": "number", "title": { "en": "Room target", "nl": "Gewenste kamertemperatuur" } }
+      ]
+    }
+  ]
+}

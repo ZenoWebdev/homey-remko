@@ -35,6 +35,8 @@ Open in de Homey-app **Apparaat toevoegen → REMKO Smart-Control Touch → Warm
 
 Temperaturen, reinigingsstatus en de laatste waargenomen afloop zijn beschikbaar via Flow-kaarten. De voorwaarde **Laatste waargenomen reinigingscyclus is langer dan dagen geleden** wordt pas waar nadat deze app minstens één cyclus heeft waargenomen. Een onbekende oude datum wordt niet verzonnen.
 
+In Flows betekent **Kamertemperatuur verandert** de gemeten temperatuur in de kamer. **Gewenste kamertemperatuur verandert** verwijst naar de ingestelde doeltemperatuur. Buiten, systeemaanvoer, systeemretour en warm water hebben afzonderlijke temperatuurkaarten.
+
 ## Ontwikkeling
 
 ```bash
