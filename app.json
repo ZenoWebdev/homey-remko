@@ -12,14 +12,32 @@
     "nl": "REMKO Smart-Control Touch"
   },
   "description": {
-    "en": "Control a REMKO heat pump locally and use its temperatures, hygiene status and weather in Homey Flows.",
-    "nl": "Bedien een REMKO-warmtepomp lokaal en gebruik temperaturen, hygiënestatus en weer in Homey Flows."
+    "en": "Home comfort and hot water in step with your day.",
+    "nl": "Comfort in huis en warm water op het juiste moment."
   },
   "category": "climate",
   "brandColor": "#24566A",
+  "tags": {
+    "en": [
+      "REMKO",
+      "heat pump",
+      "hot water"
+    ],
+    "nl": [
+      "REMKO",
+      "warmtepomp",
+      "warm water"
+    ]
+  },
+  "source": "https://github.com/ZenoWebdev/homey-remko",
+  "support": "https://github.com/ZenoWebdev/homey-remko/issues",
+  "bugs": {
+    "url": "https://github.com/ZenoWebdev/homey-remko/issues"
+  },
   "images": {
     "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png"
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
   },
   "author": {
     "name": "Zeno"
@@ -559,7 +577,8 @@
       "class": "thermostat",
       "images": {
         "small": "/drivers/remko/assets/images/small.png",
-        "large": "/drivers/remko/assets/images/large.png"
+        "large": "/drivers/remko/assets/images/large.png",
+        "xlarge": "/drivers/remko/assets/images/xlarge.png"
       },
       "capabilities": [
         "measure_temperature",
