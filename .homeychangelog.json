@@ -4,5 +4,8 @@
   },
   "0.1.1": {
     "en": "Clarified WKF 80 compatibility and invited feedback on other REMKO Smart Web models."
+  },
+  "0.1.2": {
+    "en": "Clarified Flow triggers for measured room temperature and desired room temperature."
   }
 }
