@@ -1,0 +1,5 @@
+{
+  "0.1.0": {
+    "en": "Initial release: local heat pump control, temperatures, hygiene scheduling, solar hot-water boost and weather Flow cards."
+  }
+}
