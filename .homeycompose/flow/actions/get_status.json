@@ -1,0 +1,8 @@
+{ "title": { "en": "Get heat-pump temperatures", "nl": "Haal warmtepomptemperaturen op" }, "args": [ { "name": "device", "type": "device", "filter": "driver_id=remko" } ], "tokens": [
+  { "name": "room", "type": "number", "title": { "en": "Room °C", "nl": "Kamer °C" } },
+  { "name": "target", "type": "number", "title": { "en": "Room target °C", "nl": "Kamerdoel °C" } },
+  { "name": "outside", "type": "number", "title": { "en": "Outside °C", "nl": "Buiten °C" } },
+  { "name": "supply", "type": "number", "title": { "en": "System supply °C", "nl": "Systeem aanvoer °C" } },
+  { "name": "return", "type": "number", "title": { "en": "System return °C", "nl": "Systeem retour °C" } },
+  { "name": "hot_water", "type": "number", "title": { "en": "Hot water °C", "nl": "Warm water °C" } }
+] }

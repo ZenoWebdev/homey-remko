@@ -1,0 +1,1 @@
+{ "type": "boolean", "title": { "en": "Solar boost", "nl": "Extra laden" }, "getable": true, "setable": false, "uiComponent": "sensor" }

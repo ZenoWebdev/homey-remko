@@ -1,0 +1,798 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "site.zeno.remko",
+  "version": "0.1.0",
+  "sdk": 3,
+  "compatibility": ">=12.0.1",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "REMKO Smart-Control Touch",
+    "nl": "REMKO Smart-Control Touch"
+  },
+  "description": {
+    "en": "Control a REMKO heat pump locally and use its temperatures, hygiene status and weather in Homey Flows.",
+    "nl": "Bedien een REMKO-warmtepomp lokaal en gebruik temperaturen, hygiënestatus en weer in Homey Flows."
+  },
+  "category": "climate",
+  "brandColor": "#24566A",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png"
+  },
+  "author": {
+    "name": "Zeno"
+  },
+  "flow": {
+    "conditions": [
+      {
+        "title": {
+          "en": "Last observed hygiene cycle was more than days ago",
+          "nl": "Laatste waargenomen reinigingscyclus is langer dan dagen geleden"
+        },
+        "titleFormatted": {
+          "en": "Last observed hygiene cycle was more than [[days]] days ago",
+          "nl": "Laatste waargenomen reinigingscyclus is meer dan [[days]] dagen geleden"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          },
+          {
+            "name": "days",
+            "type": "number",
+            "title": {
+              "en": "Days",
+              "nl": "Dagen"
+            },
+            "min": 1,
+            "max": 365,
+            "step": 1
+          }
+        ],
+        "id": "hygiene_older_than"
+      },
+      {
+        "title": {
+          "en": "Extra hot-water charging is active",
+          "nl": "Extra boilerladen is actief"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          }
+        ],
+        "id": "solar_boost_active"
+      },
+      {
+        "title": {
+          "en": "Today's REMKO forecast has enough sunny hours",
+          "nl": "REMKO verwacht vandaag genoeg zonnige uren"
+        },
+        "titleFormatted": {
+          "en": "REMKO expects at least [[hours]] sunny hours today",
+          "nl": "REMKO verwacht vandaag minstens [[hours]] zonnige uren"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          },
+          {
+            "name": "hours",
+            "type": "number",
+            "title": {
+              "en": "Sunny hours",
+              "nl": "Zonnige uren"
+            },
+            "min": 1,
+            "max": 24,
+            "step": 1
+          }
+        ],
+        "id": "sunny_hours_at_least"
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Get hygiene status",
+          "nl": "Haal reinigingsstatus op"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "last_cycle",
+            "type": "string",
+            "title": {
+              "en": "Last observed cycle",
+              "nl": "Laatste waargenomen cyclus"
+            }
+          },
+          {
+            "name": "active",
+            "type": "boolean",
+            "title": {
+              "en": "Active",
+              "nl": "Actief"
+            }
+          },
+          {
+            "name": "mode",
+            "type": "string",
+            "title": {
+              "en": "Mode",
+              "nl": "Modus"
+            }
+          },
+          {
+            "name": "schedule",
+            "type": "string",
+            "title": {
+              "en": "Schedule",
+              "nl": "Planning"
+            }
+          }
+        ],
+        "id": "get_hygiene"
+      },
+      {
+        "title": {
+          "en": "Get heat-pump temperatures",
+          "nl": "Haal warmtepomptemperaturen op"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "room",
+            "type": "number",
+            "title": {
+              "en": "Room °C",
+              "nl": "Kamer °C"
+            }
+          },
+          {
+            "name": "target",
+            "type": "number",
+            "title": {
+              "en": "Room target °C",
+              "nl": "Kamerdoel °C"
+            }
+          },
+          {
+            "name": "outside",
+            "type": "number",
+            "title": {
+              "en": "Outside °C",
+              "nl": "Buiten °C"
+            }
+          },
+          {
+            "name": "supply",
+            "type": "number",
+            "title": {
+              "en": "System supply °C",
+              "nl": "Systeem aanvoer °C"
+            }
+          },
+          {
+            "name": "return",
+            "type": "number",
+            "title": {
+              "en": "System return °C",
+              "nl": "Systeem retour °C"
+            }
+          },
+          {
+            "name": "hot_water",
+            "type": "number",
+            "title": {
+              "en": "Hot water °C",
+              "nl": "Warm water °C"
+            }
+          }
+        ],
+        "id": "get_status"
+      },
+      {
+        "title": {
+          "en": "Get today's REMKO forecast",
+          "nl": "Haal REMKO-weer voor vandaag op"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "outside",
+            "type": "number",
+            "title": {
+              "en": "Outside °C",
+              "nl": "Buiten °C"
+            }
+          },
+          {
+            "name": "min",
+            "type": "number",
+            "title": {
+              "en": "Minimum °C",
+              "nl": "Minimum °C"
+            }
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "title": {
+              "en": "Maximum °C",
+              "nl": "Maximum °C"
+            }
+          },
+          {
+            "name": "rain",
+            "type": "number",
+            "title": {
+              "en": "Rain mm",
+              "nl": "Regen mm"
+            }
+          },
+          {
+            "name": "hours",
+            "type": "number",
+            "title": {
+              "en": "Forecast hours",
+              "nl": "Verwachtingsuren"
+            }
+          },
+          {
+            "name": "sunny_hours",
+            "type": "number",
+            "title": {
+              "en": "Sunny hours",
+              "nl": "Zonnige uren"
+            }
+          }
+        ],
+        "id": "get_weather"
+      },
+      {
+        "title": {
+          "en": "Set climate mode",
+          "nl": "Stel klimaatmodus in"
+        },
+        "titleFormatted": {
+          "en": "Set climate mode to [[mode]]",
+          "nl": "Stel klimaatmodus in op [[mode]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode",
+              "nl": "Modus"
+            },
+            "values": [
+              {
+                "id": "auto",
+                "label": {
+                  "en": "Automatic",
+                  "nl": "Automatisch"
+                }
+              },
+              {
+                "id": "heat",
+                "label": {
+                  "en": "Heating",
+                  "nl": "Verwarmen"
+                }
+              },
+              {
+                "id": "cool",
+                "label": {
+                  "en": "Cooling",
+                  "nl": "Koelen"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "set_climate_mode"
+      },
+      {
+        "title": {
+          "en": "Set hygiene mode",
+          "nl": "Stel reinigingsmodus in"
+        },
+        "titleFormatted": {
+          "en": "Set hygiene mode to [[mode]]",
+          "nl": "Stel reinigingsmodus in op [[mode]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode",
+              "nl": "Modus"
+            },
+            "values": [
+              {
+                "id": "off",
+                "label": {
+                  "en": "Off",
+                  "nl": "Uit"
+                }
+              },
+              {
+                "id": "static",
+                "label": {
+                  "en": "Scheduled",
+                  "nl": "Gepland"
+                }
+              },
+              {
+                "id": "dynamic",
+                "label": {
+                  "en": "Dynamic",
+                  "nl": "Dynamisch"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "set_hygiene_mode"
+      },
+      {
+        "title": {
+          "en": "Set weekly hygiene schedule",
+          "nl": "Stel wekelijkse reinigingsplanning in"
+        },
+        "titleFormatted": {
+          "en": "Schedule hygiene on [[day]] at [[hour]]:[[minute]]",
+          "nl": "Plan reiniging op [[day]] om [[hour]]:[[minute]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          },
+          {
+            "name": "day",
+            "type": "dropdown",
+            "title": {
+              "en": "Day",
+              "nl": "Dag"
+            },
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Monday",
+                  "nl": "Maandag"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Tuesday",
+                  "nl": "Dinsdag"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Wednesday",
+                  "nl": "Woensdag"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Thursday",
+                  "nl": "Donderdag"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Friday",
+                  "nl": "Vrijdag"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Saturday",
+                  "nl": "Zaterdag"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "Sunday",
+                  "nl": "Zondag"
+                }
+              }
+            ]
+          },
+          {
+            "name": "hour",
+            "type": "number",
+            "title": {
+              "en": "Hour",
+              "nl": "Uur"
+            },
+            "min": 0,
+            "max": 23,
+            "step": 1
+          },
+          {
+            "name": "minute",
+            "type": "number",
+            "title": {
+              "en": "Minute",
+              "nl": "Minuut"
+            },
+            "min": 0,
+            "max": 59,
+            "step": 1
+          }
+        ],
+        "id": "set_hygiene_schedule"
+      },
+      {
+        "title": {
+          "en": "Set room temperature",
+          "nl": "Stel kamertemperatuur in"
+        },
+        "titleFormatted": {
+          "en": "Set room temperature to [[temperature]] °C",
+          "nl": "Stel kamertemperatuur in op [[temperature]] °C"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "title": {
+              "en": "Temperature (°C)",
+              "nl": "Temperatuur (°C)"
+            },
+            "min": 15,
+            "max": 30,
+            "step": 0.5
+          }
+        ],
+        "id": "set_room_temperature"
+      },
+      {
+        "title": {
+          "en": "Start hygiene cycle via schedule",
+          "nl": "Start reinigingscyclus via planning"
+        },
+        "hint": {
+          "en": "Schedules the cycle for two minutes from now. Requires Scheduled hygiene mode and a suitable auxiliary heater.",
+          "nl": "Plant de cyclus twee minuten vooruit. Vereist reinigingsmodus Gepland en een geschikte extra warmtebron."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          }
+        ],
+        "id": "start_hygiene_cycle"
+      },
+      {
+        "title": {
+          "en": "Start extra hot-water charging",
+          "nl": "Start extra boilerladen"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          }
+        ],
+        "id": "start_solar_boost"
+      },
+      {
+        "title": {
+          "en": "Stop extra hot-water charging",
+          "nl": "Stop extra boilerladen"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remko"
+          }
+        ],
+        "id": "stop_solar_boost"
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Heat pump",
+        "nl": "Warmtepomp"
+      },
+      "class": "thermostat",
+      "images": {
+        "small": "/drivers/remko/assets/images/small.png",
+        "large": "/drivers/remko/assets/images/large.png"
+      },
+      "capabilities": [
+        "measure_temperature",
+        "target_temperature",
+        "thermostat_mode",
+        "measure_temperature.outdoor",
+        "measure_temperature.supply",
+        "measure_temperature.return",
+        "measure_temperature.hot_water",
+        "measure_temperature.hot_water_target",
+        "hygiene_mode",
+        "hygiene_status",
+        "last_hygiene_cycle",
+        "hygiene_schedule",
+        "boost_active",
+        "forecast_today"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 15,
+          "max": 30,
+          "step": 0.5
+        },
+        "thermostat_mode": {
+          "values": [
+            {
+              "id": "auto",
+              "title": {
+                "en": "Automatic",
+                "nl": "Automatisch"
+              }
+            },
+            {
+              "id": "heat",
+              "title": {
+                "en": "Heating",
+                "nl": "Verwarmen"
+              }
+            },
+            {
+              "id": "cool",
+              "title": {
+                "en": "Cooling",
+                "nl": "Koelen"
+              }
+            }
+          ]
+        },
+        "measure_temperature.outdoor": {
+          "title": {
+            "en": "Outside",
+            "nl": "Buiten"
+          }
+        },
+        "measure_temperature.supply": {
+          "title": {
+            "en": "System supply",
+            "nl": "Systeem aanvoer"
+          }
+        },
+        "measure_temperature.return": {
+          "title": {
+            "en": "System return",
+            "nl": "Systeem retour"
+          }
+        },
+        "measure_temperature.hot_water": {
+          "title": {
+            "en": "Hot water",
+            "nl": "Warm water"
+          }
+        },
+        "measure_temperature.hot_water_target": {
+          "title": {
+            "en": "Hot water target",
+            "nl": "Warm water doel"
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "host",
+          "type": "text",
+          "label": {
+            "en": "Controller IP address or hostname",
+            "nl": "IP-adres of hostnaam controller"
+          },
+          "value": ""
+        },
+        {
+          "id": "boost_target",
+          "type": "number",
+          "label": {
+            "en": "Solar boost target (°C)",
+            "nl": "Doel zonne-overschot (°C)"
+          },
+          "value": 55,
+          "min": 40,
+          "max": 60,
+          "step": 0.5
+        },
+        {
+          "id": "boost_minutes",
+          "type": "number",
+          "label": {
+            "en": "Maximum boost duration (minutes)",
+            "nl": "Maximale duur extra laden (minuten)"
+          },
+          "value": 180,
+          "min": 15,
+          "max": 480
+        }
+      ],
+      "pair": [
+        {
+          "id": "address"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices",
+            "prev": "address"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "remko"
+    }
+  ],
+  "capabilities": {
+    "boost_active": {
+      "type": "boolean",
+      "title": {
+        "en": "Solar boost",
+        "nl": "Extra laden"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "forecast_today": {
+      "type": "string",
+      "title": {
+        "en": "Today's forecast",
+        "nl": "Weer vandaag"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "hygiene_mode": {
+      "type": "enum",
+      "title": {
+        "en": "Hygiene mode",
+        "nl": "Reinigingsmodus"
+      },
+      "getable": true,
+      "setable": true,
+      "values": [
+        {
+          "id": "off",
+          "title": {
+            "en": "Off",
+            "nl": "Uit"
+          }
+        },
+        {
+          "id": "static",
+          "title": {
+            "en": "Scheduled",
+            "nl": "Gepland"
+          }
+        },
+        {
+          "id": "dynamic",
+          "title": {
+            "en": "Dynamic",
+            "nl": "Dynamisch"
+          }
+        }
+      ]
+    },
+    "hygiene_schedule": {
+      "type": "string",
+      "title": {
+        "en": "Hygiene schedule",
+        "nl": "Reinigingsplanning"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "hygiene_status": {
+      "type": "enum",
+      "title": {
+        "en": "Hygiene status",
+        "nl": "Reinigingsstatus"
+      },
+      "getable": true,
+      "setable": false,
+      "values": [
+        {
+          "id": "idle",
+          "title": {
+            "en": "Idle",
+            "nl": "Niet actief"
+          }
+        },
+        {
+          "id": "active",
+          "title": {
+            "en": "Active",
+            "nl": "Actief"
+          }
+        }
+      ]
+    },
+    "last_hygiene_cycle": {
+      "type": "string",
+      "title": {
+        "en": "Last observed cycle",
+        "nl": "Laatst waargenomen cyclus"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    }
+  }
+}

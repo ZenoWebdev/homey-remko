@@ -1,0 +1,1 @@
+{ "title": { "en": "Extra hot-water charging is active", "nl": "Extra boilerladen is actief" }, "args": [ { "name": "device", "type": "device", "filter": "driver_id=remko" } ] }

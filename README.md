@@ -1,26 +1,43 @@
-# Homey REMKO
+# REMKO Smart-Control Touch voor Homey Pro
 
-Werkmap voor [homey-remko](https://github.com/ZenoWebdev/homey-remko).
+Lokale Homey-app voor een REMKO Smart-Control Touch warmtepomp. De app leest de gegevens via de MQTT-WebSocket van de controller op het eigen netwerk. Voor koppelen zijn het lokale IP-adres en toegang tot de webinterface nodig. De app haalt de controllergegevens zelf op; er staan geen wachtwoorden in de repository.
 
-## Repository ophalen
+## Functies
 
-Deze map bevat al een afgeschermde `.git`-map en is daardoor zelf geen bruikbare Git-checkout. Clone de repository in een submap:
+- Kamer- en gewenste temperatuur uitlezen; gewenste temperatuur in stappen van 0,5 °C instellen.
+- Klimaatmodus automatisch, verwarmen of koelen kiezen.
+- Buiten-, systeemaanvoer-, systeemretour- en warmwatertemperatuur uitlezen. De controller exposeert op deze installatie geen bruikbare afzonderlijke vloerverwarmingssensor; de twee systeemtemperaturen zijn daarom ook zo gelabeld.
+- Hygiënemodus uit/gepland/dynamisch, wekelijkse dag en tijd, en actuele status lezen of instellen. De laatste **door deze app waargenomen** afloop wordt bewaard; de controller biedt via deze interface geen historische datum van een eerder voltooide cyclus.
+- Flow-actie **Start reinigingscyclus via planning**: plant de statische cyclus twee minuten na de controllerklok, volgt of de controller hem actief meldt en herstelt de bestaande dag en tijd na afloop of als hij niet binnen zeven minuten begint. Deze functie vereist dat Gepland al is ingeschakeld en de installatie een geschikte extra warmtebron heeft. De actie gebruikt geen relais-testovername.
+- Flow-acties **Start/stop extra boilerladen**. Start verhoogt tijdelijk het warmwaterdoel naar de ingestelde waarde (standaard 55 °C). Stop of het maximum van 180 minuten herstelt de oorspronkelijke instelling, zolang niemand die intussen zelf heeft veranderd. De REMKO-app meet zelf geen PV-productie; gebruik daarvoor een andere Homey-app als Flow-voorwaarde.
+- REMKO-weer per uur, gekoppeld aan de klok van de controller. Het dagoverzicht en de Flow-tokens bevatten alleen resterende uren van vandaag: minimum/maximum, neerslag en aantal heldere of lichtbewolkte uren. Oude vrijdag-/zaterdaguren worden op zondag gefilterd.
+
+## Installeren en koppelen
+
+Vereist een Homey Pro met Homey 12.0.1 of nieuwer en een REMKO-controller die vanaf de Homey via HTTP en MQTT-WebSocket (`9001`) bereikbaar is.
 
 ```bash
-git clone https://github.com/ZenoWebdev/homey-remko.git /home/zeno/remko/homey-remko
+npm install
+homey app validate
+homey app install
 ```
 
-## Deze README toevoegen en pushen
+Open in de Homey-app **Apparaat toevoegen → REMKO Smart-Control Touch → Warmtepomp** en vul het lokale IP-adres van de controller in. Stel bij het apparaat het gewenste doel en de maximale duur voor extra boilerladen in.
 
-Voer dit uit in een terminal op je eigen computer, met toegang tot GitHub:
+## Flow-voorbeeld
+
+1. **Wanneer:** de stroommeter-app meldt teruglevering.
+2. **En:** **REMKO verwacht vandaag minstens N zonnige uren** en eventueel **Laatste waargenomen reinigingscyclus is meer dan N dagen geleden**.
+3. **Dan:** **Start extra boilerladen** of, wanneer een reiniging gewenst is, **Start reinigingscyclus via planning**.
+4. **Wanneer:** teruglevering stopt → **Stop extra boilerladen**. De maximumduur vormt een extra automatische stop.
+
+Temperaturen, reinigingsstatus en de laatste waargenomen afloop zijn beschikbaar via Flow-kaarten. De voorwaarde **Laatste waargenomen reinigingscyclus is langer dan dagen geleden** wordt pas waar nadat deze app minstens één cyclus heeft waargenomen. Een onbekende oude datum wordt niet verzonnen.
+
+## Ontwikkeling
 
 ```bash
-cp /home/zeno/remko/README.md /home/zeno/remko/homey-remko/README.md
-cd /home/zeno/remko/homey-remko
-git status
-git add README.md
-git commit -m "Add README"
-git push origin HEAD
+npm test
+homey app validate
 ```
 
-Controleer vóór het kopiëren of de repository al een `README.md` bevat: `cp` zou die overschrijven. Bij het pushen kan GitHub om aanmelding vragen. Je hebt schrijfrechten op de repository nodig.
+De koppeling is getest met Smart-Control Touch 4.27. Schrijven van de kamertemperatuur en klimaatmodus was eerder op deze controller bevestigd. Voor het warmwaterdoel is 49 → 49,5 → 49 °C live met teruglezing getest. Een volledige hygiënecyclus duurt mogelijk uren; de geplande start moet nog tijdens een geschikte periode op de Homey Pro worden geobserveerd. De app heeft geen toegang tot een historisch succeslog van de controller.

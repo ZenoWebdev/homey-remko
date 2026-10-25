@@ -1,0 +1,4 @@
+{ "type": "enum", "title": { "en": "Hygiene status", "nl": "Reinigingsstatus" }, "getable": true, "setable": false, "values": [
+  { "id": "idle", "title": { "en": "Idle", "nl": "Niet actief" } },
+  { "id": "active", "title": { "en": "Active", "nl": "Actief" } }
+] }

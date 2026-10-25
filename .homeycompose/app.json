@@ -1,0 +1,16 @@
+{
+  "id": "site.zeno.remko",
+  "version": "0.1.0",
+  "sdk": 3,
+  "compatibility": ">=12.0.1",
+  "platforms": ["local"],
+  "name": { "en": "REMKO Smart-Control Touch", "nl": "REMKO Smart-Control Touch" },
+  "description": {
+    "en": "Control a REMKO heat pump locally and use its temperatures, hygiene status and weather in Homey Flows.",
+    "nl": "Bedien een REMKO-warmtepomp lokaal en gebruik temperaturen, hygiënestatus en weer in Homey Flows."
+  },
+  "category": "climate",
+  "brandColor": "#24566A",
+  "images": { "small": "/assets/images/small.png", "large": "/assets/images/large.png" },
+  "author": { "name": "Zeno" }
+}

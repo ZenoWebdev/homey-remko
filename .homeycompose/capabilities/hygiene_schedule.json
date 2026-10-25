@@ -1,0 +1,1 @@
+{ "type": "string", "title": { "en": "Hygiene schedule", "nl": "Reinigingsplanning" }, "getable": true, "setable": false, "uiComponent": "sensor" }

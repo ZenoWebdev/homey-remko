@@ -1,0 +1,6 @@
+{ "title": { "en": "Get hygiene status", "nl": "Haal reinigingsstatus op" }, "args": [ { "name": "device", "type": "device", "filter": "driver_id=remko" } ], "tokens": [
+  { "name": "last_cycle", "type": "string", "title": { "en": "Last observed cycle", "nl": "Laatste waargenomen cyclus" } },
+  { "name": "active", "type": "boolean", "title": { "en": "Active", "nl": "Actief" } },
+  { "name": "mode", "type": "string", "title": { "en": "Mode", "nl": "Modus" } },
+  { "name": "schedule", "type": "string", "title": { "en": "Schedule", "nl": "Planning" } }
+] }

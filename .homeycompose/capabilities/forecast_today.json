@@ -1,0 +1,1 @@
+{ "type": "string", "title": { "en": "Today's forecast", "nl": "Weer vandaag" }, "getable": true, "setable": false, "uiComponent": "sensor" }

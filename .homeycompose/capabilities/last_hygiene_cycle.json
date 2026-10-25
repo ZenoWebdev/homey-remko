@@ -1,0 +1,1 @@
+{ "type": "string", "title": { "en": "Last observed cycle", "nl": "Laatst waargenomen cyclus" }, "getable": true, "setable": false, "uiComponent": "sensor" }

@@ -1,0 +1,5 @@
+{ "type": "enum", "title": { "en": "Hygiene mode", "nl": "Reinigingsmodus" }, "getable": true, "setable": true, "values": [
+  { "id": "off", "title": { "en": "Off", "nl": "Uit" } },
+  { "id": "static", "title": { "en": "Scheduled", "nl": "Gepland" } },
+  { "id": "dynamic", "title": { "en": "Dynamic", "nl": "Dynamisch" } }
+] }

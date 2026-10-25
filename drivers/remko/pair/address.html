@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<h1 data-i18n="pair.title">REMKO-controller</h1>
+<p data-i18n="pair.explain">Vul het lokale IP-adres van de Smart-Control Touch in.</p>
+<input id="host" type="text" placeholder="192.168.1.100" style="width:100%;box-sizing:border-box;padding:10px">
+<button id="next" data-i18n="pair.next" style="margin-top:12px">Volgende</button>
+<p id="error" style="color:#a00"></p>
+<script>
+Homey.setTitle(Homey.__('pair.title'));
+document.getElementById('next').addEventListener('click', async () => {
+  try {
+    await Homey.emit('set_host', document.getElementById('host').value.trim());
+    Homey.showView('list_devices');
+  } catch (error) { document.getElementById('error').textContent = error.message; }
+});
+</script></body></html>

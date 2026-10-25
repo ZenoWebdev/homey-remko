@@ -1,0 +1,1 @@
+{ "title": { "en": "Stop extra hot-water charging", "nl": "Stop extra boilerladen" }, "args": [ { "name": "device", "type": "device", "filter": "driver_id=remko" } ] }

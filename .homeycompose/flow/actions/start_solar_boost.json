@@ -1,0 +1,1 @@
+{ "title": { "en": "Start extra hot-water charging", "nl": "Start extra boilerladen" }, "args": [ { "name": "device", "type": "device", "filter": "driver_id=remko" } ] }

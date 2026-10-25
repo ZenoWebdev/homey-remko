@@ -1,0 +1,4 @@
+{ "title": { "en": "Start hygiene cycle via schedule", "nl": "Start reinigingscyclus via planning" },
+  "hint": { "en": "Schedules the cycle for two minutes from now. Requires Scheduled hygiene mode and a suitable auxiliary heater.",
+    "nl": "Plant de cyclus twee minuten vooruit. Vereist reinigingsmodus Gepland en een geschikte extra warmtebron." },
+  "args": [ { "name": "device", "type": "device", "filter": "driver_id=remko" } ] }

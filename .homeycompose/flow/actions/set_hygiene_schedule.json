@@ -1,0 +1,14 @@
+{ "title": { "en": "Set weekly hygiene schedule", "nl": "Stel wekelijkse reinigingsplanning in" }, "titleFormatted": { "en": "Schedule hygiene on [[day]] at [[hour]]:[[minute]]", "nl": "Plan reiniging op [[day]] om [[hour]]:[[minute]]" }, "args": [
+  { "name": "device", "type": "device", "filter": "driver_id=remko" },
+  { "name": "day", "type": "dropdown", "title": { "en": "Day", "nl": "Dag" }, "values": [
+    { "id": "0", "label": { "en": "Monday", "nl": "Maandag" } },
+    { "id": "1", "label": { "en": "Tuesday", "nl": "Dinsdag" } },
+    { "id": "2", "label": { "en": "Wednesday", "nl": "Woensdag" } },
+    { "id": "3", "label": { "en": "Thursday", "nl": "Donderdag" } },
+    { "id": "4", "label": { "en": "Friday", "nl": "Vrijdag" } },
+    { "id": "5", "label": { "en": "Saturday", "nl": "Zaterdag" } },
+    { "id": "6", "label": { "en": "Sunday", "nl": "Zondag" } }
+  ] },
+  { "name": "hour", "type": "number", "title": { "en": "Hour", "nl": "Uur" }, "min": 0, "max": 23, "step": 1 },
+  { "name": "minute", "type": "number", "title": { "en": "Minute", "nl": "Minuut" }, "min": 0, "max": 59, "step": 1 }
+] }

@@ -1,0 +1,8 @@
+{ "title": { "en": "Set climate mode", "nl": "Stel klimaatmodus in" }, "titleFormatted": { "en": "Set climate mode to [[mode]]", "nl": "Stel klimaatmodus in op [[mode]]" }, "args": [
+  { "name": "device", "type": "device", "filter": "driver_id=remko" },
+  { "name": "mode", "type": "dropdown", "title": { "en": "Mode", "nl": "Modus" }, "values": [
+    { "id": "auto", "label": { "en": "Automatic", "nl": "Automatisch" } },
+    { "id": "heat", "label": { "en": "Heating", "nl": "Verwarmen" } },
+    { "id": "cool", "label": { "en": "Cooling", "nl": "Koelen" } }
+  ] }
+] }

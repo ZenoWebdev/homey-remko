@@ -1,0 +1,14 @@
+{
+  "name": "site.zeno.remko",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local REMKO Smart-Control Touch integration for Homey Pro",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --test test",
+    "validate": "homey app validate"
+  },
+  "dependencies": {
+    "mqtt": "^5.14.1"
+  }
+}

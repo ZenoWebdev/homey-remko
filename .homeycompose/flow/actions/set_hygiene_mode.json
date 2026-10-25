@@ -1,0 +1,8 @@
+{ "title": { "en": "Set hygiene mode", "nl": "Stel reinigingsmodus in" }, "titleFormatted": { "en": "Set hygiene mode to [[mode]]", "nl": "Stel reinigingsmodus in op [[mode]]" }, "args": [
+  { "name": "device", "type": "device", "filter": "driver_id=remko" },
+  { "name": "mode", "type": "dropdown", "title": { "en": "Mode", "nl": "Modus" }, "values": [
+    { "id": "off", "label": { "en": "Off", "nl": "Uit" } },
+    { "id": "static", "label": { "en": "Scheduled", "nl": "Gepland" } },
+    { "id": "dynamic", "label": { "en": "Dynamic", "nl": "Dynamisch" } }
+  ] }
+] }

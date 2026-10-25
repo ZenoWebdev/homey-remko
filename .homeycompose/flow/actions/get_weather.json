@@ -1,0 +1,8 @@
+{ "title": { "en": "Get today's REMKO forecast", "nl": "Haal REMKO-weer voor vandaag op" }, "args": [ { "name": "device", "type": "device", "filter": "driver_id=remko" } ], "tokens": [
+  { "name": "outside", "type": "number", "title": { "en": "Outside °C", "nl": "Buiten °C" } },
+  { "name": "min", "type": "number", "title": { "en": "Minimum °C", "nl": "Minimum °C" } },
+  { "name": "max", "type": "number", "title": { "en": "Maximum °C", "nl": "Maximum °C" } },
+  { "name": "rain", "type": "number", "title": { "en": "Rain mm", "nl": "Regen mm" } },
+  { "name": "hours", "type": "number", "title": { "en": "Forecast hours", "nl": "Verwachtingsuren" } },
+  { "name": "sunny_hours", "type": "number", "title": { "en": "Sunny hours", "nl": "Zonnige uren" } }
+] }
