@@ -2,6 +2,8 @@
 
 Lokale Homey-app voor een REMKO Smart-Control Touch warmtepomp. De app leest de gegevens via de MQTT-WebSocket van de controller op het eigen netwerk. Voor koppelen zijn het lokale IP-adres en toegang tot de webinterface nodig. De app haalt de controllergegevens zelf op; er staan geen wachtwoorden in de repository.
 
+Getest op een **REMKO WKF 80 met Smart Web**. Andere REMKO-modellen met dezelfde interface werken naar verwachting ook, maar zijn nog niet bevestigd. Laat via een [GitHub-issue](https://github.com/ZenoWebdev/homey-remko/issues) weten welk model je hebt en of de app daarop werkt.
+
 ## Functies
 
 - Kamer- en gewenste temperatuur uitlezen; gewenste temperatuur in stappen van 0,5 °C instellen.
