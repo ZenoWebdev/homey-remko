@@ -1,20 +1,44 @@
 {
   "id": "site.zeno.remko",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "sdk": 3,
   "compatibility": ">=12.0.1",
-  "platforms": ["local"],
-  "name": { "en": "REMKO Smart-Control Touch", "nl": "REMKO Smart-Control Touch" },
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "REMKO Smart-Control Touch",
+    "nl": "REMKO Smart-Control Touch"
+  },
   "description": {
     "en": "Home comfort and hot water in step with your day.",
     "nl": "Comfort in huis en warm water op het juiste moment."
   },
   "category": "climate",
   "brandColor": "#24566A",
-  "tags": { "en": ["REMKO", "heat pump", "hot water"], "nl": ["REMKO", "warmtepomp", "warm water"] },
+  "tags": {
+    "en": [
+      "REMKO",
+      "heat pump",
+      "hot water"
+    ],
+    "nl": [
+      "REMKO",
+      "warmtepomp",
+      "warm water"
+    ]
+  },
   "source": "https://github.com/ZenoWebdev/homey-remko",
   "support": "https://github.com/ZenoWebdev/homey-remko/issues",
-  "bugs": { "url": "https://github.com/ZenoWebdev/homey-remko/issues" },
-  "images": { "small": "/assets/images/small.png", "large": "/assets/images/large.png", "xlarge": "/assets/images/xlarge.png" },
-  "author": { "name": "Zeno" }
+  "bugs": {
+    "url": "https://github.com/ZenoWebdev/homey-remko/issues"
+  },
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Zeno"
+  }
 }

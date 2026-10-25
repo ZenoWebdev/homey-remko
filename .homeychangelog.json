@@ -1,5 +1,8 @@
 {
   "0.1.0": {
     "en": "Initial release: local heat pump control, temperatures, hygiene scheduling, solar hot-water boost and weather Flow cards."
+  },
+  "0.1.1": {
+    "en": "Clarified WKF 80 compatibility and invited feedback on other REMKO Smart Web models."
   }
 }
