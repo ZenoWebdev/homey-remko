@@ -7,9 +7,11 @@ const RAW_TO_MODE = { 1: 'auto', 2: 'heat', 4: 'cool' };
 const HYGIENE_TO_RAW = { off: 0, static: 1, dynamic: 2 };
 const RAW_TO_HYGIENE = { 0: 'off', 1: 'static', 2: 'dynamic' };
 const DAYS = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo'];
+const OPERATING_STATES = ['unknown', 'fault', 'defrost', 'defrost_buffer', 'hot_water', 'buffer', 'heating', 'cooling', 'pool', 'circulation', 'standby', 'screed_drying', 'frost_protection', 'test', 'blocked', 'hygiene', 'silent'];
 
 module.exports = class RemkoDevice extends Homey.Device {
   async onInit() {
+    if (!this.hasCapability('operating_state')) await this.addCapability('operating_state');
     this.registerCapabilityListener('target_temperature', value => this.setRoomTemperature({ temperature: value }));
     this.registerCapabilityListener('thermostat_mode', value => this.setClimateMode({ mode: value }));
     this.registerCapabilityListener('hygiene_mode', value => this.setHygieneMode({ mode: value }));
@@ -71,6 +73,8 @@ module.exports = class RemkoDevice extends Homey.Device {
     }
     const mode = RAW_TO_MODE[raw(values[IDS.mode])];
     if (mode) await this.setCap('thermostat_mode', mode);
+    const operatingState = raw(values[IDS.operatingState]);
+    if (operatingState !== null) await this.setCap('operating_state', OPERATING_STATES[operatingState] || 'unknown');
     const hygiene = RAW_TO_HYGIENE[raw(values[IDS.hygieneMode])];
     if (hygiene) await this.setCap('hygiene_mode', hygiene);
     const active = raw(values[IDS.hygieneStatus]) === 1 || raw(values[IDS.hygieneActive]) === 1;

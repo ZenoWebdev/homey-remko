@@ -1,3 +1,3 @@
-Houd je huis comfortabel met lokale bediening van een REMKO Smart-Control Touch-warmtepomp. Bekijk kamer-, buiten- en watertemperaturen, pas het kamerdoel en de klimaatmodus aan en gebruik de ingebouwde weersverwachting in Flows.
+Houd je huis comfortabel met lokale bediening van een REMKO Smart-Control Touch-warmtepomp. Bekijk kamer-, buiten- en watertemperaturen en de actuele bedrijfstoestand, pas het kamerdoel en de klimaatmodus aan en gebruik de ingebouwde weersverwachting in Flows.
 
 Gebruik teruglevering die een andere Homey-app meet om warm water op het juiste moment extra op te laden. De app beheert ook een geplande hygiënecyclus. Getest op een REMKO WKF 80 met Smart Web; andere REMKO-modellen met dezelfde interface werken naar verwachting ook, maar zijn nog niet bevestigd. Laat via de Support-link weten welk model je hebt en hoe het werkt. Dit is een onafhankelijke community-integratie.

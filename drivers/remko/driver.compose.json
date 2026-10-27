@@ -3,7 +3,7 @@
   "class": "thermostat",
   "images": { "small": "/drivers/remko/assets/images/small.png", "large": "/drivers/remko/assets/images/large.png", "xlarge": "/drivers/remko/assets/images/xlarge.png" },
   "capabilities": [
-    "measure_temperature", "target_temperature", "thermostat_mode",
+    "measure_temperature", "target_temperature", "thermostat_mode", "operating_state",
     "measure_temperature.outdoor", "measure_temperature.supply", "measure_temperature.return",
     "measure_temperature.hot_water", "measure_temperature.hot_water_target",
     "hygiene_mode", "hygiene_status", "last_hygiene_cycle", "hygiene_schedule",

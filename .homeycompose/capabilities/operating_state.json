@@ -1,0 +1,25 @@
+{
+  "type": "enum",
+  "title": { "en": "Current operating state", "nl": "Actuele bedrijfstoestand" },
+  "getable": true,
+  "setable": false,
+  "values": [
+    { "id": "unknown", "title": { "en": "Unknown", "nl": "Onbekend" } },
+    { "id": "fault", "title": { "en": "Fault", "nl": "Storing" } },
+    { "id": "defrost", "title": { "en": "Defrosting", "nl": "Ontdooien" } },
+    { "id": "defrost_buffer", "title": { "en": "Charging defrost buffer", "nl": "Ontdooibuffer laden" } },
+    { "id": "hot_water", "title": { "en": "Heating hot water", "nl": "Warm water laden" } },
+    { "id": "buffer", "title": { "en": "Charging buffer", "nl": "Buffer laden" } },
+    { "id": "heating", "title": { "en": "Heating", "nl": "Verwarmen" } },
+    { "id": "cooling", "title": { "en": "Cooling", "nl": "Koelen" } },
+    { "id": "pool", "title": { "en": "Heating pool", "nl": "Zwembad verwarmen" } },
+    { "id": "circulation", "title": { "en": "Circulation", "nl": "Circulatie" } },
+    { "id": "standby", "title": { "en": "Standby", "nl": "Stand-by" } },
+    { "id": "screed_drying", "title": { "en": "Screed drying", "nl": "Vloerdroging" } },
+    { "id": "frost_protection", "title": { "en": "Frost protection", "nl": "Vorstbeveiliging" } },
+    { "id": "test", "title": { "en": "Test mode", "nl": "Testmodus" } },
+    { "id": "blocked", "title": { "en": "Blocked", "nl": "Geblokkeerd" } },
+    { "id": "hygiene", "title": { "en": "Hygiene cycle", "nl": "Reinigingscyclus" } },
+    { "id": "silent", "title": { "en": "Silent mode", "nl": "Stille modus" } }
+  ]
+}
